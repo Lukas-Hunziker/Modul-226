@@ -1,10 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.ArrayList;
 /**
- * Write a description of class Protagonist here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Lukas
+ * @version 1.0 10.01.2020
  */
 public class Protagonist extends Player
 {
@@ -14,15 +12,20 @@ public class Protagonist extends Player
      */
     int atime;
     
-    int speed = 6;//default value 5
+    int speed = 6;//default value 6
     boolean multiplekeys = false;
+    ArrayList<String> pictures = new ArrayList<String>();
     
     public Protagonist(){
         setImage("mage/wizzard_m_idle_anim_f0.png");
+        pictures.add("mage/wizzard_m_idle_anim_f0.png");
+        pictures.add("mage/wizzard_m_idle_anim_f1.png");
+        pictures.add("mage/wizzard_m_idle_anim_f2.png");
+        pictures.add("mage/wizzard_m_idle_anim_f3.png");
     }
     public void act() 
     {
-        animation();
+        atime = Controller.animation(speed,pictures,this,atime);
         move();
     }
     
