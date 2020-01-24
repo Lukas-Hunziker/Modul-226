@@ -38,5 +38,5 @@ public class Controller
         if (atime==180) actor.setImage(pictures.get(3));
         if (atime==240 && pictures.size() == 5) actor.setImage(pictures.get(4));
         return atime;
-    }
+    }    
 }

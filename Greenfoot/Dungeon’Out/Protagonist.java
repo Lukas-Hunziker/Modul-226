@@ -10,9 +10,14 @@ public class Protagonist extends Player
      * Act - do whatever the Protagonist wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    //animationtimer
     int atime;
     
-    int speed = 6;//default value 6
+    int firerate = 25;
+    //reloadtimer
+    int rtime = firerate;
+    
+    int speed = 6;//default value
     boolean multiplekeys = false;
     ArrayList<String> pictures = new ArrayList<String>();
     
@@ -27,30 +32,8 @@ public class Protagonist extends Player
     {
         atime = Controller.animation(speed,pictures,this,atime);
         move();
-    }
-    
-    private void animation()
-    {
-        //Animates the Walking with diffrent pictures
-        while (60 % speed !=0)
-        {
-            speed++;
-            
-            if (speed > 60)
-            {
-                speed = 60;
-            }
-        }
-        
-        int animationSpeed = speed;
-        
-        atime= atime +animationSpeed;
-        if (atime==240) atime=0;
-        if (atime==0) setImage("mage/wizzard_m_idle_anim_f0.png");
-        if (atime==60) setImage("mage/wizzard_m_idle_anim_f1.png");
-        if (atime==120) setImage("mage/wizzard_m_idle_anim_f2.png");
-        if (atime==180) setImage("mage/wizzard_m_idle_anim_f3.png");
-    }   
+        shoot();
+    } 
     
     private void move()
     {
@@ -105,4 +88,39 @@ public class Protagonist extends Player
             multiplekeys = true;
         }
     }
+    
+    private void shoot()
+    {
+        if (rtime > 0)
+        {
+            rtime--;
+        }
+        if(Greenfoot.isKeyDown("up") && rtime == 0)
+        {
+            getWorld().addObject (new Bullet("up"), getX() + 25, getY()-33);
+            
+            rtime = firerate;
+        }
+        
+        if(Greenfoot.isKeyDown("right") && rtime == 0)
+        {
+            getWorld().addObject (new Bullet("right"), getX() + 25, getY()-33);
+            
+            rtime = firerate;
+        }
+        
+        if(Greenfoot.isKeyDown("down") && rtime == 0)
+        {
+            getWorld().addObject (new Bullet("down"), getX() + 25, getY()-33);
+            
+            rtime = firerate;
+        }
+        
+        if(Greenfoot.isKeyDown("left") && rtime == 0)
+        {
+            getWorld().addObject (new Bullet("left"), getX() + 25, getY()-33);
+            
+            rtime = firerate;
+        }
+    }    
 }
