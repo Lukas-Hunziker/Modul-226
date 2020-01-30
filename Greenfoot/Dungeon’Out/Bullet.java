@@ -14,7 +14,11 @@ public class Bullet extends Player
      * Act - do whatever the Bullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int speed = 10;//default value 10
+    private int speed = 8;//default value 8
+    private int atime;
+    
+    //Damage that bullet does to enemies
+    public int bulletDamage = 1;
     
     private String direction; 
     ArrayList<String> pictures = new ArrayList<String>();
@@ -26,18 +30,21 @@ public class Bullet extends Player
        pictures.add("fireball/FB003.png");
        pictures.add("fireball/FB004.png");
        pictures.add("fireball/FB005.png");
+       setRotation();
     }    
     public void act() 
     {
        atime = Controller.animation(speed,pictures,this,atime);
-       move();
-       if(isAtEdge())
+       
+       move(speed);
+       
+       if(getOneIntersectingObject(Bobjects.class) != null)
        {
            getWorld().removeObject(this);
        }
     }
     
-    private void move()
+    private void setRotation()
     {
         if (direction == "up")
         {
@@ -58,7 +65,10 @@ public class Bullet extends Player
         {
             setRotation(180);
         }
-        
-        move(speed);
-    }    
+    }
+    
+    public int bulletDamage()
+    {
+        return bulletDamage;
+    }
 }

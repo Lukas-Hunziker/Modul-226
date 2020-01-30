@@ -12,7 +12,8 @@ public class Necromancer extends Enemies
     //animationtimer
     int atime;
     
-    int speed = 6;//default value
+    int speed = 1;//default value 1
+    
     boolean multiplekeys = false;
     ArrayList<String> pictures = new ArrayList<String>();
     
@@ -27,5 +28,10 @@ public class Necromancer extends Enemies
     public void act() 
     {
         atime = Controller.animation(speed,pictures,this,atime);
-    }    
+    }
+    
+    public int getSpeed()
+    {
+        return speed;
+    }
 }

@@ -9,11 +9,27 @@ import java.util.ArrayList;
  */
 public class Zombie extends Enemies
 {
+    //Stats from zombie
+    private int speed = 2;//default value 2
+    private int lifes = 5;//default value 5
+    private double hitDamge = 0.5;//default value 0.5
+    
     //animationtimer
     int atime;
     
-    int speed = 6;//default value
-    boolean multiplekeys = false;
+    //target
+    Protagonist protagonist;
+    
+    //Boolean if both X and Y values need to get changed
+    boolean ChangeBothXY = false;
+    
+    //collision detection
+    private int xOld;
+    private int yOld;
+    
+    //Stop movemenent, when Enemie just hit the Protagonist
+    private boolean moveStop = false;
+
     ArrayList<String> pictures = new ArrayList<String>();
     
     public Zombie(){
@@ -31,5 +47,57 @@ public class Zombie extends Enemies
     public void act() 
     {
         atime = Controller.animation(speed,pictures,this,atime);
+        move();
+        
+        getsShot();
     }    
+    
+    private void move()
+    {
+        protagonist= (Protagonist) getWorld().getObjects(Protagonist.class).get(0);
+        
+        xOld = getX();
+        yOld = getY();
+        
+        moveStop = Enemies.move(protagonist,this,speed,moveStop);
+        
+        collisionDetection();
+    }
+    
+    private void collisionDetection()
+    {
+        if (getOneIntersectingObject(Enemies.class) != null || 
+            getOneIntersectingObject(Bobjects.class) != null)
+        {
+            setLocation(xOld, yOld);
+        }
+    }
+    
+    private void getsShot()
+    {
+        greenfoot.World world = getWorld();
+        //creates a refrence to the bullet that hits the Zombie
+        Bullet bullet = (Bullet) getOneIntersectingObject(Bullet.class);
+        lifes = Enemies.getsShot(world, bullet, this, lifes);
+    }
+    
+    public double getDamage()
+    {
+        return hitDamge;
+    }
+    
+    public int getSpeed()
+    {
+        return speed;
+    }
+    
+    public boolean getmoveStop()
+    {
+        return moveStop;
+    }
+    
+    public void setmoveStop()
+    {
+        moveStop = true;
+    }
 }

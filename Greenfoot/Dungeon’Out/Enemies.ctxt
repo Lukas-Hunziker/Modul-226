@@ -1,7 +1,16 @@
 #BlueJ class context
 comment0.target=Enemies
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Enemies\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Enemies\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=2
+comment1.params=world\ target\ enemie\ lifes
+comment1.target=int\ getsShot(greenfoot.World,\ Bullet,\ greenfoot.Actor,\ int)
+comment2.params=protagonist\ enemie\ speed\ moveStop
+comment2.target=boolean\ move(Protagonist,\ greenfoot.Actor,\ int,\ boolean)
+comment3.params=
+comment3.target=double\ getDamage()
+comment4.params=
+comment4.target=int\ getSpeed()
+comment5.params=
+comment5.target=boolean\ getmoveStop()
+comment6.params=
+comment6.target=void\ setmoveStop()
+numComments=7

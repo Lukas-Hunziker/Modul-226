@@ -9,11 +9,24 @@ import java.util.ArrayList;
  */
 public class Wogol extends Enemies
 {
+    //Stats from wogol
+    private int speed = 4;//default value 4
+    private int lifes = 2;
+    private double hitDamge = 0.25;//default value 0.25
+    
     //animationtimer
     int atime;
     
-    int speed = 6;//default value
-    boolean multiplekeys = false;
+    //target
+    Protagonist protagonist;
+    
+    //collision detection
+    private int xOld;
+    private int yOld;
+    
+    //Stop movemenent, when Enemie just hit the Protagonist
+    private boolean moveStop = false;
+    
     ArrayList<String> pictures = new ArrayList<String>();
     
     public Wogol(){
@@ -27,5 +40,56 @@ public class Wogol extends Enemies
     public void act() 
     {
         atime = Controller.animation(speed,pictures,this,atime);
-    }    
+        
+        move();
+        getsShot();
+    }
+    
+    private void move()
+    {
+        protagonist= (Protagonist) getWorld().getObjects(Protagonist.class).get(0);
+        
+        xOld = getX();
+        yOld = getY();
+        
+        moveStop = Enemies.move(protagonist, this,speed,moveStop);
+        
+        collisionDetection();
+    }
+    
+    private void collisionDetection()
+    {
+        if (getOneIntersectingObject(Enemies.class) != null || 
+            getOneIntersectingObject(Bobjects.class) != null)
+        {
+            setLocation(xOld, yOld);
+        }
+    }
+    
+    private void getsShot()
+    {
+        greenfoot.World world = getWorld();
+        Bullet bullet = (Bullet) getOneIntersectingObject(Bullet.class);
+        lifes = Enemies.getsShot(world, bullet, this, lifes);
+    }
+    
+    public double getDamage()
+    {
+        return hitDamge;
+    }
+    
+    public int getSpeed()
+    {
+        return speed;
+    }
+    
+    public boolean getmoveStop()
+    {
+        return moveStop;
+    }
+    
+    public void setmoveStop()
+    {
+        moveStop = true;
+    }
 }

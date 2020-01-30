@@ -9,12 +9,24 @@ import java.util.ArrayList;
  */
 public class Demon extends Enemies
 {
-
+    //Stats from demon
+    private int speed = 2;//default value 2
+    private int lifes = 10;//default value 10
+    private double hitDamge = 0.5;//default value 0.5
+    
     //animationtimer
     int atime;
     
-    int speed = 6;//default value
-    boolean multiplekeys = false;
+    //target
+    Protagonist protagonist;
+    
+    //collision detection
+    private int xOld;
+    private int yOld;
+    
+    //Stop movemenent, when Enemie just hit the Protagonist
+    private boolean moveStop = false;
+    
     ArrayList<String> pictures = new ArrayList<String>();
     
     public Demon(){
@@ -28,5 +40,56 @@ public class Demon extends Enemies
     public void act() 
     {
         atime = Controller.animation(speed,pictures,this,atime);
-    }    
+        
+        move();
+        getsShot();
+    }
+    
+    private void move()
+    {
+        protagonist= (Protagonist) getWorld().getObjects(Protagonist.class).get(0);
+        
+        xOld = getX();
+        yOld = getY();
+        
+        moveStop = Enemies.move(protagonist,this,speed,moveStop);
+        
+        collisionDetection();
+    }
+    
+    private void collisionDetection()
+    {
+        if (getOneIntersectingObject(Enemies.class) != null || 
+            getOneIntersectingObject(Bobjects.class) != null)
+        {
+            setLocation(xOld, yOld);
+        }
+    }
+    
+    private void getsShot()
+    {
+        greenfoot.World world = getWorld();
+        Bullet bullet = (Bullet) getOneIntersectingObject(Bullet.class);
+        lifes = Enemies.getsShot(world, bullet, this, lifes);
+    }
+    
+    public double getDamage()
+    {
+        return hitDamge;
+    }
+    
+    public int getSpeed()
+    {
+        return speed;
+    }
+    
+    public boolean getmoveStop()
+    {
+        return moveStop;
+    }
+    
+    public void setmoveStop()
+    {
+        moveStop = true;
+    }
 }

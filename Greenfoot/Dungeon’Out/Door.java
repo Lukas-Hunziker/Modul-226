@@ -8,16 +8,31 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Door extends Bobjects
 {
-    /**
-     * Act - do whatever the Door wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    //Grennfoot Images for closed and open door
+    private GreenfootImage openDoor = new GreenfootImage("Bobjectives/doors_leaf_open.png");
+    private GreenfootImage closeDoor = new GreenfootImage("Bobjectives/doors_leaf_closed.png");
+    
     public Door(){
-        setImage("Bobjectives/doors_leaf_closed.png");
-        setImage("Bobjectives/doors_leaf_open.png");
-    }
-    public void act() 
+        setImage(closeDoor);
+    } 
+    
+    //function to open or close door
+    public void doorChange(String status)
     {
-        // Add your action code here.
-    }    
+        if (status == "closed")
+            setImage(closeDoor);
+        
+        if (status == "open")
+            setImage(openDoor);
+    }
+    
+    //function too check if door is open
+    public boolean doorOpen()
+    {
+        if (getImage() == openDoor)
+        return true;
+        
+        else 
+        return false;
+    }
 }

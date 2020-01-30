@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Wand
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ magic_staff\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Wand()
+comment2.params=speedX\ speedY
+comment2.target=void\ move(int,\ int)
+comment3.params=
+comment3.target=void\ resetMovement()
+numComments=4
