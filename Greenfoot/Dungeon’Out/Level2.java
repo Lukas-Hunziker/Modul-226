@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Level2 here.
+ * Level 2 gets generated
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Lukas Hunziker) 
+ * @version (30.01.2020)
  */
 public class Level2 extends World
 {

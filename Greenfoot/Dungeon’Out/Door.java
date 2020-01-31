@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Door here.
+ * Door which opens, when all Enemies are dead to go to next Level.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Lukas Hunziker) 
+ * @version (30.01.2020)
  */
 public class Door extends Bobjects
 {

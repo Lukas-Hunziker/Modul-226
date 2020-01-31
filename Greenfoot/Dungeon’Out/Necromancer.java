@@ -2,10 +2,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class necromancer here.
+ * Necromancer is a type of enemie, who does range damage.
+ * currently not used.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Lukas Hunziker) 
+ * @version (30.01.2020)
  */
 public class Necromancer extends Enemies
 {

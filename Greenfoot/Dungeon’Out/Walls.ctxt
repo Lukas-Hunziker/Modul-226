@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Walls
+comment0.text=\r\n\ Building\ object\ \r\n\ \r\n\ @author\ (Lukas\ Hunziker)\ \r\n\ @version\ (30.01.2020)\r\n
 comment1.params=side
 comment1.target=Walls(java.lang.String)
 numComments=2

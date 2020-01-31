@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EnemyBullet here.
+ * Bullet from ranged enemies
+ * currently not used.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Lukas Hunziker) 
+ * @version (30.01.2020)
  */
 public class EnemyBullet extends Enemies
 {
@@ -12,7 +13,7 @@ public class EnemyBullet extends Enemies
     
     public void act() 
     {
-        // Add your action code here.
+        
     } 
     
     public double getDamage()

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Obstacle
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Obstacle\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Obstacle\ which\ the\ Enemies\ and\ Protagonist\ can't\ touch.\r\n\ \r\n\ @author\ (Lukas\ Hunziker)\ \r\n\ @version\ (30.01.2020)\r\n
 comment1.params=
 comment1.target=Obstacle()
 numComments=2

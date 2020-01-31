@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Enemies
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Enemies\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Group\ for\ all\ Enemies,\ with\ some\ code\ that\ the\ enemies\ need.\r\n\ \r\n\ @author\ (Lukas\ Hunziker)\ \r\n\ @version\ (30.01.2020)\r\n
 comment1.params=world\ target\ enemie\ lifes
 comment1.target=int\ getsShot(greenfoot.World,\ Bullet,\ greenfoot.Actor,\ int)
 comment2.params=protagonist\ enemie\ speed\ moveStop

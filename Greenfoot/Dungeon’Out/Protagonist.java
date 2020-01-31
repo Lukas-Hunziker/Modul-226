@@ -36,9 +36,18 @@ public class Protagonist extends Player
     //How long Protagonist is invincible after he got hit
     private int invincibleTime = 50;
     
+    //Boolean to check  if the user presses both keys
     boolean multiplekeys = false;
+    
+    //Array used to safe all the pictures
     ArrayList<String> pictures = new ArrayList<String>();
     
+    /*
+     * Constructor class
+     * In the constructor class there are all pictures and
+     * the protagonist gets his lifes
+     * @param lifes
+     */
     public Protagonist(double lifes){
         this.lifes = lifes;
         
@@ -48,6 +57,10 @@ public class Protagonist extends Player
         pictures.add("mage/wizzard_m_idle_anim_f2.png");
         pictures.add("mage/wizzard_m_idle_anim_f3.png");
     }
+    
+    /*
+     * act function from greenfoot.
+     */
     public void act() 
     {
         spawnWand();
@@ -56,6 +69,9 @@ public class Protagonist extends Player
         move();
     }
     
+    /*
+     * Move function so the Protagonist moves, when the player uses his WASD keys.
+     */
     private void move()
     {
         xOld = getX();
@@ -95,6 +111,10 @@ public class Protagonist extends Player
         collisionDetection();
     }  
     
+    /*
+     * If he goes diagonal, than he will move half of the speed,
+     * since he moves in both directions x and y.
+     */
     private void multiplekeys()
     {
         if (Greenfoot.isKeyDown("w") && Greenfoot.isKeyDown("d"))
@@ -130,6 +150,11 @@ public class Protagonist extends Player
         }
     }
     
+    /*
+     * This is the collision detection function for the Protagonist.
+     * The Protagonist can't move into building objects.
+     * Also if he moves into enemies, he get's pushed of by them with their speed.
+     */
     private void collisionDetection(){
         //collision detection with building objects
         if(nextLevel() == false && getOneIntersectingObject(Bobjects.class) != null)
@@ -151,7 +176,9 @@ public class Protagonist extends Player
         }
     } 
     
-    //Checks for arrowkeys, when one is pressed shots in this direction. 
+    /*
+     * Checks for arrowkeys, when one is pressed shoots in this direction. 
+     */
     private void shoot()
     {
         if (rtime > 0)
@@ -188,7 +215,9 @@ public class Protagonist extends Player
         }
     } 
     
-    //If the Protagonist hasn't a wand yet, than the Wand spawns
+    /*
+     * If the Protagonist hasn't a wand yet, than the Wand spawns
+     */
     private void spawnWand()
     {
         if((getWorld().getObjects(Wand.class)).size() == 0)
@@ -198,7 +227,11 @@ public class Protagonist extends Player
         }
     }
     
-    //Check if the Protagonist is at door if this is open he goes to next Level
+    /*
+     * Check if the Protagonist is at door if this is open he goes to next Level
+     * @return true or false.
+     * The return value depends of if the Protagonist is at the open door for 100 tics or not.
+     */
     private boolean nextLevel()
     {
         Door door = (Door) getWorld().getObjects(Door.class).get(0);
@@ -229,13 +262,18 @@ public class Protagonist extends Player
             return false;
         }    
     }
-    
+    /*
+     * set the xOld and yOld variable to the current location getX() / getY()
+     */
     private void resetXY()
     {
         xOld = getX();
         yOld = getY();  
     }
     
+    /*
+     * @param Give the current enemy, that hits the Protagonist.
+     */
     private void enemeyHit(Enemies enemie)
     {
         //push protagonist away from enemie
@@ -282,6 +320,10 @@ public class Protagonist extends Player
         }
     }
     
+    /*
+     * @return true or false
+     * The return value depends from if Enemies or Objectives get hit.
+     */
     public boolean getcollisionDetection()
     {
         if (getOneIntersectingObject(Bobjects.class) != null && isTouching(Enemies.class))
